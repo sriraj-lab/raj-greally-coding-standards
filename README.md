@@ -75,7 +75,44 @@ Basic Raj-Greally lab coding standards/best practices in the context of AI devel
 ### Results
 - Only experimental details
 
-
+## Next steps
+raj-greally-coding-standards/
+├── README.md                          # Overview, philosophy, how to use this repo
+├── 00-quickstart/
+│   ├── DAY_ONE.md                     # Account setup, SSH, first login, basic navigation
+│   ├── STARTER_BASHRC                 # Actual file they can copy
+│   ├── SSH_CONFIG_TEMPLATE            # Templatized version of your config
+│   └── FIRST_WEEK_PROJECT.md          # The structured 1-week onboarding project
+├── 01-hpc-guide/
+│   ├── SLURM_BASICS.md               # Partitions, sbatch headers, array jobs, monitoring
+│   ├── CONDA_ENVIRONMENTS.md          # Creating, activating, the bashrc gotcha
+│   ├── DATA_LOCATIONS.md              # Reference panels, genomes, shared databases
+│   └── COMMON_ERRORS.md              # chr1 vs 1, numpy binary compat, etc.
+├── 02-coding-standards/
+│   ├── PROJECT_STRUCTURE.md           # Directory conventions, naming, what goes where
+│   ├── PYTHON_STYLE.md                # Style guide (can be short, defer to ruff/black)
+│   ├── GIT_WORKFLOW.md                # What to commit, .gitignore template, branch strategy
+│   ├── PACKAGE_MANAGEMENT.md          # mamba vs uv pip, when to make a new env
+│   └── TESTING.md                     # Unit tests, smoke tests, validation patterns
+├── 03-analysis-standards/
+│   ├── DOCUMENTATION.md               # Logs vs Notes vs Results (your three-tier system)
+│   ├── REPRODUCIBILITY.md             # Script provenance, parameter logging, figure scripts
+│   └── MARIMO_GUIDE.md                # When and how to use marimo notebooks
+├── 04-ai-development/
+│   ├── AI_POLICY.md                   # Autonomy levels, review requirements, attribution
+│   ├── CLAUDE_MD_TEMPLATE.md          # Starter claude.md for new lab members
+│   ├── PROJECT_AGENTS_TEMPLATE.md     # Template NOTES.md / AGENTS.md per project
+│   └── RECOMMENDED_MCPS.md           # Context7, etc.
+├── templates/
+│   ├── starter.bashrc
+│   ├── ssh_config_template
+│   ├── sbatch_template.sh
+│   ├── claude_md_template.md
+│   ├── project_notes_template.md
+│   └── gitignore_template
+└── checklists/
+    ├── NEW_MEMBER_ONBOARDING.md       # PI/mentor-facing checklist
+    └── ROTATION_STUDENT_ONBOARDING.md # Abbreviated version
 
 Originally generated: 2/11/2026
 
