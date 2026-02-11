@@ -1,119 +1,55 @@
-# Coding Standards
+# Raj-Greally Lab Coding Standards
 
-Basic Raj-Greally lab coding standards/best practices in the context of AI development tools 
+These standards exist to make computational research in the lab reproducible, collaborative, and safe — whether you're writing your first bash command or building GPU-accelerated pipelines. They cover everything from day-one HPC setup to advanced AI-assisted development, and they're written to be read by someone who might have no prior coding experience.
 
-- **IF PEOPLE HAVE NO CODING EXPERIENCE, AGENTS ARE OFF LIMITS**
+## How to Use This Repo
 
-## Startup instructions 
+1. **Clone this repo** to your local machine
+2. **Read [00-quickstart/DAY_ONE.md](00-quickstart/DAY_ONE.md)** and follow the setup instructions
+3. **Complete the [first-week project](00-quickstart/FIRST_WEEK_PROJECT.md)** — this is your onboarding assessment
+4. **Use the rest as reference** — come back to specific sections when you need them
 
-- [ ] Getting started on hpc
-- [ ] Getting started LLMs
-- [ ] Starter project- 1 week
-  - [ ] git
-  - [ ] bash commands 
-  - [ ] *use hpc basic commands*
-  - [ ] *package management*
-  - [ ] *run a job*
-  - [ ] make a small edit
-  - [ ] naming conventions 
+## Sections
 
-## Basic Standards 
+### [00 — Quickstart](00-quickstart/)
+Everything you need on day one: SSH setup, your first `.bashrc`, and a structured first-week project that takes you from zero to submitting SLURM jobs and pushing to GitHub.
 
-- [ ] Starter bashrc
-   - basic module load
-   - tool paths
-   - aliases
- - Bash commands
- - HPC login info stuff
- - SLURM management
- - Start with git
-   - .gitignore 
+### [01 — HPC Guide](01-hpc-guide/)
+How to use the Einstein HPC cluster: SLURM basics (partitions, sbatch, array jobs), conda environment management, shared data locations, and a troubleshooting guide for common errors.
 
-## Algorithmic Development 
+### [02 — Coding Standards](02-coding-standards/)
+How we organize projects, write Python, use git, manage packages, and test our code. These conventions keep the lab's computational work consistent and maintainable.
 
-- Basic workflows
-  - keep seperate contexts for theoretical and technical development
-  - Piecemeal buildup with plan and iterative methods
-- Unit and smoke tests
-- Optimize code based on repo structure
-- Use plan mode aggressively
-- Package management
-  - mamba for creating new environments
-  - uv pip for installing specific python packages
+### [03 — Analysis Standards](03-analysis-standards/)
+How we document our work (the three-tier system: logs, notes, results), ensure reproducibility, and use marimo notebooks for interactive analysis.
 
-## Results/Figure Development
+### [04 — AI Development](04-ai-development/)
+Our AI usage policy (a tiered autonomy system from learning mode to full agentic workflows), starter templates for `claude.md` and per-project agent files, and recommended tools.
 
-- Marimo
+### [Templates](templates/)
+Ready-to-copy files: starter `.bashrc`, SSH config, sbatch template, `.gitignore`, `claude.md` template, and project notes template.
 
-## AI Development
+### [Checklists](checklists/)
+Onboarding checklists for mentors: one for new lab members, one (abbreviated) for rotation students.
 
-- [ ] Joint Agent/CLAUDE rule set markdown file at the root
-  - HPC standardized information
-    - HPC sbatch headers
-    - Array jobs
-  - Reference locations - reference panels, genome etc. 
-  - common pipelines (sequencing, global ancestry, local ancestry, ANNOVAR, etc.)
-  - Annotations - publicly available databases, instructions on how to call them
-  - Common errors: chr1 vs 1
-    
+## Philosophy
 
-- Necessary/recommended MCPs
-  - Context7: API calling 
-  
-- Seperate NOTES/AGENTS.md per project
-   - Scripts
-   - Paths to inputs
-   - Paths to results
-   - General debugging tips and information
-   - Log of provenance
+- **Start simple.** New members begin with bash and SLURM before touching AI tools.
+- **Document everything.** If another lab member can't reproduce your result from your notes alone, the documentation is incomplete.
+- **AI is a tool, not a crutch.** You must understand code before you run it, whether you wrote it or an AI did.
+- **These are living documents.** If something is wrong, outdated, or missing — open a PR.
 
-## Documentation
-### Logs
-- what was run and what was not
-### Notes
-- Specific debugging information etc
-### Results
-- Only experimental details
+## For New Members
 
-## Next steps
-raj-greally-coding-standards/
-├── README.md                          # Overview, philosophy, how to use this repo
-├── 00-quickstart/
-│   ├── DAY_ONE.md                     # Account setup, SSH, first login, basic navigation
-│   ├── STARTER_BASHRC                 # Actual file they can copy
-│   ├── SSH_CONFIG_TEMPLATE            # Templatized version of your config
-│   └── FIRST_WEEK_PROJECT.md          # The structured 1-week onboarding project
-├── 01-hpc-guide/
-│   ├── SLURM_BASICS.md               # Partitions, sbatch headers, array jobs, monitoring
-│   ├── CONDA_ENVIRONMENTS.md          # Creating, activating, the bashrc gotcha
-│   ├── DATA_LOCATIONS.md              # Reference panels, genomes, shared databases
-│   └── COMMON_ERRORS.md              # chr1 vs 1, numpy binary compat, etc.
-├── 02-coding-standards/
-│   ├── PROJECT_STRUCTURE.md           # Directory conventions, naming, what goes where
-│   ├── PYTHON_STYLE.md                # Style guide (can be short, defer to ruff/black)
-│   ├── GIT_WORKFLOW.md                # What to commit, .gitignore template, branch strategy
-│   ├── PACKAGE_MANAGEMENT.md          # mamba vs uv pip, when to make a new env
-│   └── TESTING.md                     # Unit tests, smoke tests, validation patterns
-├── 03-analysis-standards/
-│   ├── DOCUMENTATION.md               # Logs vs Notes vs Results (your three-tier system)
-│   ├── REPRODUCIBILITY.md             # Script provenance, parameter logging, figure scripts
-│   └── MARIMO_GUIDE.md                # When and how to use marimo notebooks
-├── 04-ai-development/
-│   ├── AI_POLICY.md                   # Autonomy levels, review requirements, attribution
-│   ├── CLAUDE_MD_TEMPLATE.md          # Starter claude.md for new lab members
-│   ├── PROJECT_AGENTS_TEMPLATE.md     # Template NOTES.md / AGENTS.md per project
-│   └── RECOMMENDED_MCPS.md           # Context7, etc.
-├── templates/
-│   ├── starter.bashrc
-│   ├── ssh_config_template
-│   ├── sbatch_template.sh
-│   ├── claude_md_template.md
-│   ├── project_notes_template.md
-│   └── gitignore_template
-└── checklists/
-    ├── NEW_MEMBER_ONBOARDING.md       # PI/mentor-facing checklist
-    └── ROTATION_STUDENT_ONBOARDING.md # Abbreviated version
+Start here: **[Day One Setup](00-quickstart/DAY_ONE.md)**
 
-Originally generated: 2/11/2026
+Your mentor will walk you through the setup on your first day. By the end of your first week, you should have completed the [first-week project](00-quickstart/FIRST_WEEK_PROJECT.md) and be comfortable with SSH, bash, SLURM, and git.
 
-Updated: 2/11/2026
+## For Mentors
+
+See the [onboarding checklists](checklists/) for what to prepare before a new member arrives and what to review during their first month.
+
+---
+
+*Originally generated: 2026-02-11*
+*Last updated: 2026-02-11*

@@ -1,0 +1,145 @@
+# =============================================================================
+# SSH Config Template for Einstein HPC
+# =============================================================================
+#
+# This file goes in: ~/.ssh/config (on your LOCAL machine, not on the HPC)
+#
+# SETUP:
+#   1. Replace all <YOUR_USERNAME> with your HPC username
+#   2. Replace <CURRENT_COMPUTE_NODE> with your active compute node
+#      (you will get this after running `interactive` on the login node)
+#   3. Create the sockets directory: mkdir -p ~/.ssh/sockets
+#   4. Copy to ~/.ssh/config and set permissions: chmod 600 ~/.ssh/config
+#
+# USAGE:
+#   ssh hpc-login      # Connect to the login node (gateway)
+#   ssh hpc-compute    # Connect directly to your compute node
+#
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Login Node (Gateway)
+# -----------------------------------------------------------------------------
+# This is the front door to the HPC cluster. You land here first, and from
+# here you can submit jobs, transfer files, or jump to compute nodes.
+
+Host hpc-login
+    HostName <YOUR_USERNAME>.hpc.einsteinmed.edu
+    User <YOUR_USERNAME>
+    IdentityFile ~/.ssh/id_rsa
+
+    # --- Connection Multiplexing ---
+    # These three settings work together to speed up SSH connections.
+    #
+    # ControlMaster auto
+    #   The first SSH connection to this host becomes the "master" connection.
+    #   All subsequent connections reuse it instead of creating new ones.
+    #   This means your 2nd, 3rd, etc. terminal tabs connect instantly
+    #   without re-authenticating.
+    #
+    # ControlPath ~/.ssh/sockets/%r@%h-%p
+    #   Where to store the socket file for the master connection.
+    #   %r = remote username, %h = hostname, %p = port.
+    #   You must create this directory first: mkdir -p ~/.ssh/sockets
+    #
+    # ControlPersist 10m
+    #   Keep the master connection alive for 10 minutes after the last
+    #   session disconnects. This means if you close your terminal and
+    #   reopen it within 10 minutes, reconnection is still instant.
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 10m
+
+    # --- Agent Forwarding ---
+    # ForwardAgent passes your local SSH keys through to the HPC.
+    # This lets you use git with SSH authentication on the HPC without
+    # copying your private keys there. Your keys stay on your local machine.
+    #
+    # SECURITY NOTE: Only enable this for trusted hosts. A compromised host
+    # could use your forwarded agent to access other systems.
+    ForwardAgent yes
+
+
+# -----------------------------------------------------------------------------
+# Compute Node (Direct Access)
+# -----------------------------------------------------------------------------
+# Compute nodes do the actual work (running scripts, processing data).
+# You cannot SSH to them directly from the internet -- you must go through
+# the login node first. ProxyJump handles this automatically.
+
+Host hpc-compute
+    HostName <CURRENT_COMPUTE_NODE>
+    User <YOUR_USERNAME>
+
+    # --- ProxyJump ---
+    # This is the key setting. It tells SSH: "to reach this host, first
+    # connect through hpc-login, then jump to the compute node."
+    #
+    # What happens when you type `ssh hpc-compute`:
+    #   1. SSH connects to hpc-login (the gateway)
+    #   2. From hpc-login, SSH tunnels to the compute node
+    #   3. You land on the compute node as if you connected directly
+    #
+    # This is transparent -- you just type `ssh hpc-compute` and it works.
+    ProxyJump hpc-login
+
+    # Use a separate key for compute node access (optional but recommended).
+    # You can use the same key as hpc-login if you prefer.
+    IdentityFile ~/.ssh/id_rsa
+
+    # --- Keepalive ---
+    # Compute node sessions can be dropped by firewalls or network timeouts.
+    # These settings send a small "ping" every 60 seconds to keep the
+    # connection alive. If 5 pings in a row get no response (5 minutes),
+    # the connection is considered dead and is closed.
+    ServerAliveInterval 60
+    ServerAliveCountMax 5
+
+    # --- Host Key Checking (Relaxed) ---
+    # Compute nodes are dynamically assigned -- the same hostname (e.g.,
+    # cpu-743) may map to different physical machines over time. This means
+    # their SSH host keys change, which would normally trigger a scary
+    # "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED" error.
+    #
+    # We disable strict checking for compute nodes since they rotate.
+    # This is safe because we are already tunneling through the trusted
+    # login node via ProxyJump.
+    #
+    # DO NOT set these options for the login node or external servers.
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
+
+# =============================================================================
+# Companion: setnode function (add to your LOCAL shell config)
+# =============================================================================
+#
+# When you start a new interactive job, you get assigned a new compute node.
+# This function updates your SSH config so `hpc-compute` points to the new node.
+#
+# SETUP:
+#   Add this function to your local shell config file:
+#     - macOS (zsh): ~/.zshrc
+#     - Linux (bash): ~/.bashrc
+#
+# USAGE:
+#   setnode cpu-743    # Updates hpc-compute to point to cpu-743
+#   ssh hpc-compute    # Now connects to cpu-743
+#
+# HOW IT WORKS:
+#   It uses sed to find the "Host hpc-compute" block in your SSH config
+#   and replaces the HostName line with the new node name.
+#
+# --- Copy everything below this line into your shell config ---
+
+# function setnode() {
+#     sed -i '' -e "/Host hpc-compute/,/HostName/ s/HostName .*/HostName $1/" ~/.ssh/config
+#     echo "SSH config updated: hpc-compute is now $1"
+# }
+
+# --- End of setnode function ---
+#
+# After adding it, reload your shell config:
+#   source ~/.zshrc    # macOS
+#   source ~/.bashrc   # Linux
