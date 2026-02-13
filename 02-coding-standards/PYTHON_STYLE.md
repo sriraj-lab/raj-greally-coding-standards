@@ -82,6 +82,14 @@ from local_pca.embedding import compute_embeddings
 - **No mutable default arguments.** Use `None` and assign inside the function.
 - **No bare `except`.** Catch specific exceptions.
 - **No `import *`.** Always import specific names.
+- **Reuse lab utilities.** For common infra/popgen helpers, import from `rajlab_utils` instead of re-implementing.
+
+Example:
+
+```python
+from rajlab_utils.core import run_cmd, setup_logging
+from rajlab_utils.popgen.tools.plink2 import compute_global_pcs
+```
 
 ## Script Structure
 

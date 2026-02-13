@@ -26,6 +26,38 @@
 2. **Use descriptive environment names.** `neural-admixture` tells you what it is for. `env1` does not.
 3. **One environment per workflow family.** You do not need one per script, but separate environments for separate toolchains (e.g., `local_pca` for PCA work, `neural-admixture` for torch-based models).
 
+## Lab Shared Utility Package (`rajlab_utils`)
+
+Before writing new helpers for common operations (logging, command execution, ID parsing/alignment, genetic-map parsing, VCF helpers, `bcftools`/`plink2`/`regenie` wrappers), check and use `rajlab_utils`.
+
+- Repo: `git@github.com:sriraj-lab/utilities.git`
+- Import path: `rajlab_utils`
+- API index: `utilities/docs/API.md` in that repo
+
+### Install Pattern (local)
+
+```bash
+conda activate <your-env>
+cd /path/to/utilities
+python -m pip install -e .
+```
+
+### Install Pattern (HPC)
+
+```bash
+source ~/.bashrc
+conda activate local_pca
+cd /gs/gsfs0/users/raj-lab/software/utilities
+python -m pip install -e .
+```
+
+If you need to run package tests in that environment:
+
+```bash
+python -m pip install -e ".[dev]"
+pytest -q
+```
+
 ## Lock Files
 
 When you need to record the exact environment state (e.g., for a publication or shared analysis):

@@ -18,7 +18,7 @@ Everything you need on day one: SSH setup, your first `.bashrc`, and a structure
 How to use the Einstein HPC cluster: SLURM basics (partitions, sbatch, array jobs), conda environment management, shared data locations, and a troubleshooting guide for common errors.
 
 ### [02 — Coding Standards](02-coding-standards/)
-How we organize projects, write Python, use git, manage packages, and test our code. These conventions keep the lab's computational work consistent and maintainable.
+How we organize projects, write Python, use git, manage packages, and test our code. This section also covers use of the lab shared utility package (`rajlab_utils`) so common code is reused instead of duplicated.
 
 ### [03 — Analysis Standards](03-analysis-standards/)
 How we document our work (the three-tier system: logs, notes, results), ensure reproducibility, and use marimo notebooks for interactive analysis.
@@ -36,8 +36,23 @@ Onboarding checklists for mentors: one for new lab members, one (abbreviated) fo
 
 - **Start simple.** New members begin with bash and SLURM before touching AI tools.
 - **Document everything.** If another lab member can't reproduce your result from your notes alone, the documentation is incomplete.
+- **Reuse shared utilities first.** Use `rajlab_utils` for common logging/IO/tool-wrapper patterns before writing project-local helpers.
 - **AI is a tool, not a crutch.** You must understand code before you run it, whether you wrote it or an AI did.
 - **These are living documents.** If something is wrong, outdated, or missing — open a PR.
+
+## Lab Shared Utilities
+
+For reusable Python helpers used across projects, use the `rajlab_utils` package:
+
+- Repo: `git@github.com:sriraj-lab/utilities.git`
+- Package import: `rajlab_utils`
+- API docs live in that repo under `docs/API.md`
+
+See package usage guidance in:
+
+- `02-coding-standards/PACKAGE_MANAGEMENT.md`
+- `02-coding-standards/PROJECT_STRUCTURE.md`
+- `02-coding-standards/PYTHON_STYLE.md`
 
 ## For New Members
 
@@ -52,4 +67,4 @@ See the [onboarding checklists](checklists/) for what to prepare before a new me
 ---
 
 *Originally generated: 2026-02-11*
-*Last updated: 2026-02-11*
+*Last updated: 2026-02-13*

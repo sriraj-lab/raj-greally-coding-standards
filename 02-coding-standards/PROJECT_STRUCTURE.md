@@ -28,6 +28,22 @@ Every project directory must contain:
 
 Create these when you start a project, not when you "get around to it."
 
+## Shared Utilities First
+
+When adding code under `scripts/` or package modules, prefer importing shared helpers from `rajlab_utils` before creating new utility functions.
+
+Common examples that should default to `rajlab_utils`:
+
+- Logging setup
+- Subprocess command execution with checked errors
+- Sample-ID parsing/alignment
+- Chromosome normalization / contig alias handling
+- Genetic map loading + interpolation
+- VCF sample/haplotype access
+- `bcftools` / `plink2` / `regenie` command wrappers
+
+If a helper is generic and reused across projects, contribute it to the utilities repo instead of duplicating it in individual project trees.
+
 ## Example Directory Tree
 
 ```

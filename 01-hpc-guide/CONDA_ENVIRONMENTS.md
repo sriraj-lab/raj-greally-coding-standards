@@ -95,6 +95,33 @@ mamba create -n my_new_env python=3.10 pandas numpy scipy scikit-learn
 conda activate my_new_env
 ```
 
+### Clean rebuild pattern ("no-cache" behavior)
+
+For timing-critical or clean rebuilds on HPC, use a fresh package cache directory so mamba does not reuse old cached package artifacts.
+
+```bash
+# Ensure conda/mamba shell functions are available
+source ~/.bashrc
+
+# Fresh cache path for this rebuild/run
+export CONDA_PKGS_DIRS="/scratch/tmp/$USER/conda-pkgs-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$CONDA_PKGS_DIRS"
+
+# Create env with mamba
+mamba create -n my_new_env python=3.11 numpy pandas scipy scikit-learn
+
+# Activate and install project deps
+conda activate my_new_env
+cd /path/to/your/repo
+uv pip install --python "$(which python)" --no-cache -e ".[dev]"
+```
+
+If `uv` warns about hardlink fallbacks across filesystems, set:
+
+```bash
+export UV_LINK_MODE=copy
+```
+
 ### Naming convention
 
 Use descriptive names that reflect the purpose of the environment:
