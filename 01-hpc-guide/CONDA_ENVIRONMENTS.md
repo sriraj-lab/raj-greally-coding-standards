@@ -18,7 +18,7 @@ This means your numpy was compiled against a different C header than what pandas
 
 ## Correct Activation in SLURM Scripts
 
-In a SLURM batch script, conda is not available by default because `.bashrc` is not sourced in non-interactive shells. You must explicitly source it.
+In a SLURM batch script, conda is not available by default. If you are using a templated `.bashrc` , this is because `.bashrc` is not sourced in non-interactive shells. You must explicitly source it.
 
 **The correct pattern:**
 
@@ -190,29 +190,10 @@ The `--from-history` flag exports only the packages you explicitly installed, no
 
 ---
 
-## Lab Environments
-
-These environments are available on the cluster. Use them when they fit your needs rather than creating duplicates.
-
-| Environment | Key Packages | Use Case |
-|-------------|-------------|----------|
-| `local_pca` | pandas, numpy, scipy, scikit-learn | PopGen/PCA workflows, statistical analysis |
-| `neural-admixture` | torch 2.6, cyvcf2, numpy, pandas, scipy, pytest | Neural network models, VCF processing |
-
-To check what is installed in an environment:
-
-```bash
-conda activate local_pca
-conda list
-```
 
 ---
 
 ## Troubleshooting
-
-### `ModuleNotFoundError` in SLURM jobs
-
-Your conda environment was not activated. Add `source ~/.bashrc && conda activate <env>` to your sbatch script. See the [correct activation pattern](#correct-activation-in-slurm-scripts) above.
 
 ### `numpy.dtype size changed` or similar binary errors
 
