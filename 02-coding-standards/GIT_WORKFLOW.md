@@ -89,7 +89,6 @@ Adapt this to your project. When in doubt, add it to `.gitignore`.
 
 ## Commit Messages
 
-- Use imperative tense: "Add projection protocol" not "Added projection protocol"
 - One line, descriptive: "Fix off-by-one in window boundary calculation"
 - If more context is needed, add a blank line then a longer description
 
