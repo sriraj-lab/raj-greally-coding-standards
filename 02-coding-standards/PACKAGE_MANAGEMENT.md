@@ -28,7 +28,7 @@
 
 ## Lab Shared Utility Package (`rajlab_utils`)
 
-Before writing new helpers for common operations (logging, command execution, ID parsing/alignment, genetic-map parsing, VCF helpers, `bcftools`/`plink2`/`regenie` wrappers), check and use `rajlab_utils`.
+Before writing new helpers for common operations (logging, command execution, ID parsing/alignment, genetic-map parsing, VCF helpers, `bcftools`/`plink2`/`regenie` wrappers), check and use `rajlab_utils`. Common sofware tools are also available in `/gs/gsfs0/users/raj-lab/software`. 
 
 - Repo: `git@github.com:sriraj-lab/utilities.git`
 - Import path: `rajlab_utils`
@@ -46,7 +46,7 @@ python -m pip install -e .
 
 ```bash
 source ~/.bashrc
-conda activate local_pca
+conda activate <an-env>
 cd /gs/gsfs0/users/raj-lab/software/utilities
 python -m pip install -e .
 ```
@@ -74,38 +74,3 @@ For full reproducibility (same platform only):
 conda env export -n local_pca > environment-lock.yml
 ```
 
-## Lab-Shared vs Personal Environments
-
-- **Personal environments** live in your home directory. Create and modify freely.
-- **Lab-shared environments** (if any) should not be modified without coordination. If you need a package that is not there, either install it in a personal environment or discuss with the team.
-
-## Common Patterns
-
-### Creating an environment for a new project
-
-```bash
-mamba create -n my-project python=3.11 numpy pandas scipy
-conda activate my-project
-uv pip install ruff pytest
-```
-
-### Adding a package to an existing environment
-
-```bash
-conda activate local_pca
-uv pip install new-package
-```
-
-### Activating in SLURM scripts
-
-```bash
-#!/bin/bash
-#SBATCH ...
-
-source ~/.bashrc
-conda activate local_pca
-
-python my_script.py
-```
-
-Always use `source ~/.bashrc` then `conda activate` in SLURM scripts. Other approaches (`conda run`, hard-coded paths) do not work reliably.
