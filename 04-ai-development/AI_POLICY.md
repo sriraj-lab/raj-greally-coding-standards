@@ -118,7 +118,10 @@ Knowledge checks for tiers are self-judged tiers. Please be resposible- incorrec
   - [ ] OOP principles - abstraction, class reusage.
   - [ ] Multithreading/parallelism- can you effectively parallelize a workflow? *THIS MAY BE LESS IMPORTANT FOR SOME PROJECTS BUT IF YOU WORK WITH LARGE-SCALE DATA, THIS IS A CORE COMPETENCY*
   - [ ] Memory profiling/understanding - Same note as above
-- [ ] Be able to take a birdseye view and critically understand what gates must be reached for code to be considered sufficient. 
+- [ ] Be able to take a birdseye view and critically understand what gates must be reached for code to be considered sufficient.
+  - [ ] You can use a small test case to iterate over the cloud using agentic tools without access to HPC/local usage
+- [ ] Package management - thorough enough to create production code
+- [ ] If you are unsure if you are ready for this, read through population-amplifier and if you cannot understand the design choices, you are probably not ready. 
 
 **Rationale:** Maximum productivity comes with maximum responsibility. At this tier, AI is deeply integrated into your workflow, so documentation and review discipline are critical.
 
