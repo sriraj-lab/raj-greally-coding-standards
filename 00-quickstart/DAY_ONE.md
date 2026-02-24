@@ -2,6 +2,17 @@
 
 Welcome! This guide will walk you through everything you need to connect to the Einstein HPC cluster and run your first command. No prior experience with remote computing is assumed.
 
+**This is still not beginner friendly- most people with no computtational experience have any idea about terminal or things like that. This needs more context**
+## Context
+
+- [ ] What is terminal?
+  - [ ] move terminal commands here 
+- [ ] Why terminal?
+  - [ ] basrhc and startup stuff 
+- [ ] Why HPC?
+  - [ ] Basics of login and compute node 
+- [ ] Package management (more context)
+
 ---
 
 ## Prerequisites
