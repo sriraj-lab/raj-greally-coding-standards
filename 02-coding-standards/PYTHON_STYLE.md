@@ -1,29 +1,7 @@
 # Python Style
 
-Keep style overhead low. Let automated tools handle formatting so you can focus on science.
+Keep style overhead low. Let automated tools handle formatting so you can focus on science. Put this as context for your LLM coding tool. *You should still practice these conventions when not using LLMs*
 
-## Use ruff
-
-[ruff](https://docs.astral.sh/ruff/) handles both linting and formatting. Add this to your `pyproject.toml`:
-
-```toml
-[tool.ruff]
-line-length = 88
-target-version = "py311"
-
-[tool.ruff.lint]
-select = ["E", "F", "I", "W"]
-
-[tool.ruff.format]
-quote-style = "double"
-```
-
-Run before committing:
-
-```bash
-ruff check --fix .
-ruff format .
-```
 
 ## Naming
 
@@ -114,4 +92,4 @@ if __name__ == "__main__":
     main()
 ```
 
-This makes scripts testable, importable, and self-documenting.
+This makes scripts testable, importable, and self-documenting. There are configuration helpers in `rajlab_utils`. Please use. 
