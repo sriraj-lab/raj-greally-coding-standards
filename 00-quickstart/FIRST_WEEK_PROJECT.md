@@ -570,3 +570,8 @@ There is no "fail" -- take as long as you need. The goal is learning, not speed.
 - **Confused about a command:** Use `man <command>` or search "bash \<command\> tutorial".
 - **SLURM questions:** Run `squeue -u $USER` and `sacct` to investigate before asking.
 - **General questions:** Ask in the lab Slack channel -- someone else probably had the same question.
+
+
+# TODOs
+
+- [ ] Make solutions for students- use old TA scripts for auto-grade
