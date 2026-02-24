@@ -2,7 +2,7 @@
 
 ## Core Principle
 
-Another lab member should be able to reproduce any analysis using only the documentation. Not by asking you. Not by reading your mind. From the docs alone.
+Another lab member should be able to reproduce any analysis using only the documentation. From the docs alone.
 
 ## Reproducibility Checklist
 
