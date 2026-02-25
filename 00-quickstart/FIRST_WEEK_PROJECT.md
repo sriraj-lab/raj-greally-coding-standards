@@ -160,6 +160,7 @@ Write down the answers to these questions (you will include them in your NOTES.m
 ---
 
 ## Part 3: SLURM Batch Jobs (Day 2-3)
+*If you catastrophically delete something, the HPC takes snpashots every 12 hours. Raise a ticket with IT to restore*
 
 **Goal:** Convert an interactive command into a batch job, submit it, monitor it, and debug a failure.
 
@@ -308,6 +309,8 @@ You should have:
 ## Part 4: Python + Conda (Day 3-4)
 
 **Goal:** Use Python to read genomic data, compute summary statistics, and generate a plot -- all submitted via SLURM.
+
+**DO NOT SPEND TOO LONG DEBUGGING THIS: IF YOU CAN'T TICKET** >> TODO: Ticketing edit
 
 ### Task 4a: Write the Python Script
 
