@@ -5,6 +5,7 @@ Welcome! This guide will walk you through everything you need to connect to the 
 **This is still not beginner friendly- most people with no computtational experience have any idea about terminal or things like that. This needs more context**
 ## Context
 
+
 - [ ] What is terminal?
   - [ ] move terminal commands here 
 - [ ] Why terminal?
@@ -12,6 +13,7 @@ Welcome! This guide will walk you through everything you need to connect to the 
 - [ ] Why HPC?
   - [ ] Basics of login and compute node 
 - [ ] Package management (more context)
+- [ ] Change to being more hpc-centric- IDE-based development on the HPC. 
 
 ---
 
@@ -22,6 +24,7 @@ Before you begin, make sure you have:
 1. **An Einstein HPC account** -- your PI or lab manager should have requested this for you. You will need your HPC username (typically your Einstein login, e.g., `jsmith`).
 2. **A local terminal** -- on macOS, open the built-in Terminal app (search "Terminal" in Spotlight). On Windows, install [Windows Terminal](https://aka.ms/terminal) with WSL2, or use Git Bash.
 3. **An SSH key pair** -- we will generate one in the next section if you do not already have one.
+   
 
 ---
 
